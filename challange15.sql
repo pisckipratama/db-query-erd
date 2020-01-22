@@ -19,22 +19,22 @@ where nilai in ("A", "B");
 -- 4. Menampilkan data mahasiswa yang memiliki jumlah SKS lebih dari 10.
 select m.nim, m.nama_mahasiswa, sum(mk.sks) total_sks
 from mahasiswa m, mata_kuliah mk
-inner join kontrak k
-on m.nim = k.nim and mk.id_matkul = k.id_matkul
+    inner join kontrak k
+    on m.nim = k.nim and mk.id_matkul = k.id_matkul
 group by m.nim
 having sum(mk.sks) >= 10;
 
 -- 5. Menampilkan data mahasiwa yang mengambil mata kuliah 'data mining'.
 select m.nim, m.nama_mahasiswa, mk.nama_matkul
 from mahasiswa m, mata_kuliah mk
-inner join kontrak k
-on m.nim = k.nim and mk.id_matkul = k.id_matkul
+    inner join kontrak k
+    on m.nim = k.nim and mk.id_matkul = k.id_matkul
 where mk.nama_matkul='Data Mining';
 
 -- 6. Menampilkan jumlah mahasiswa untuk setiap dosen
 select d.id_dosen, d.nama_dosen, count(distinct m.nama_mahasiswa) total_mahasiswa
-from mahasiswa m, dosen d 
-inner join kontrak k on d.id_dosen=k.id_dosen and m.nim=k.nim
+from mahasiswa m, dosen d
+    inner join kontrak k on d.id_dosen=k.id_dosen and m.nim=k.nim
 group by d.id_dosen;
 
 -- 7. mengurutkan mahasiswa berdasarkan umurnya.
@@ -44,9 +44,3 @@ order by umur;
 
 -- 8. Menampilkan kontrak matakuliah yang harus diulang, 
 -- serta tampikan data mahasiswa jurusan dan dosen secara lengkap.
-
-select m.nim, m.nama_mahasiswa, mk.nama_matkul
-from mahasiswa m, mata_kuliah mk
-inner join kontrak k 
-on m.nim = k.nim and mk.id_matkul = k.id_matkul
-where mk.nama_matkul='Data Mining';
