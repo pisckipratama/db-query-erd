@@ -44,3 +44,8 @@ order by umur;
 
 -- 8. Menampilkan kontrak matakuliah yang harus diulang, 
 -- serta tampikan data mahasiswa jurusan dan dosen secara lengkap.
+select m.nim, m.nama_mahasiswa, m.alamat, j.nama_jurusan, d.nama_dosen, mk.nama_matkul, k.nilai
+from mahasiswa m, dosen d, mata_kuliah mk
+    inner join kontrak k on m.nim = k.nim and d.id_dosen = k.id_dosen and mk.id_matkul=k.id_matkul
+    inner join jurusan j on m.id_jurusan = j.id_jurusan
+where k.nilai in ('D', 'E');
