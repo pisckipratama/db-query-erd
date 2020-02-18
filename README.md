@@ -1,2 +1,2 @@
-# db-sqlite3
-Learn database using sqlite3
+# Learn Database
+Learn query database, and learn to draw ERD diagram
